@@ -1,0 +1,167 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: 'Big Shoulders Display';
+}
+
+.main {
+    overflow: hidden;
+    width: 100%;
+    height: 100vh;
+    background-color:
+         rgb(39, 39, 39);
+    display: flex;
+    color: #7a7a7a;
+    
+    &__notifications {
+        border: solid 1px #292929;
+        width: 15%;
+        height: 100%;
+        padding: 2rem 1rem;
+        overflow: hidden;
+        font-size: .7rem;
+        color: rgba(255, 255, 255, 0.404);
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+
+        p { padding: .2rem; }
+    }
+
+    &__scores {
+        padding: 2rem 1rem;
+        width: 15%;
+        height: 100%;
+
+        div {
+            letter-spacing: .2rem;
+            padding: .5rem 0rem .0rem 1rem;
+            text-transform: uppercase;
+            font-weight: 900;
+            font-size: 1.3rem;
+        }
+    }
+
+    &__board {
+        background-color: rgb(32, 32, 32);
+        border-left: solid 6px rgb(42, 42, 42);
+        border-right: solid 6px rgb(42, 42, 42);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 70%;
+        height: 100vh;
+        font-family: 'Mansalva', cursive;
+        position: relative;
+    }
+
+    &__name{
+        width: 45px;
+        text-align: center;
+        position: absolute;
+        text-transform: uppercase;
+        font-size: .5rem;
+    }
+    
+    &__con{
+        position: relative;
+    }
+
+    &__names {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+    }
+
+    &__canvas {
+        position: relative;
+        image-rendering: crisp-edges;
+        border: solid 1px #292929;
+    }
+}
+
+.body {
+    background-color: rgb(39, 39, 39);
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.center {
+    border-radius: .5rem;
+    background-color: #060822;
+    width: 20vw;
+    height: 30vh;
+    margin: 20% auto;
+    border: solid 1px white;
+}
+
+.form {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    &__size{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        flex-direction: row;
+        margin: .5rem;
+
+        p{
+            color: white;
+            padding: 0 .5rem;
+        }
+    }
+
+    &__input-size{
+        border-radius: .3rem;
+        border: none;
+        width: 30%;
+    }
+
+    &__input-name{
+        border-radius: .2rem;
+        border: none;
+        margin: .5rem;
+        height: 2rem;
+        padding-left: .2rem;
+    }
+
+    &__button{
+        margin: .5rem;
+        width: 50%;
+        border-radius: .2rem;
+        height: 2rem;
+        color: white;
+        padding: .3rem;
+        background-color: #2b3072;
+        border: solid 1px white;
+        cursor: pointer;
+    }
+}
+
+.modal {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: 9;
+    width: 100%;
+    height: 100vh;
+    background-color: #00021680;
+
+    &--over{
+        @extend .modal;
+        display: none;
+    }
+}
+
+.game-center {
+    z-index: 10;
+    margin: 15% auto;
+}
