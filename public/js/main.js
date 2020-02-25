@@ -371,6 +371,7 @@ const rotatePlayer = (player) => {
     player.update = true;
 }
 
+let ping = true;
 const movePlayer = (name,direction) => {
     let player = players[name];
     if(!player) return;
@@ -379,8 +380,9 @@ const movePlayer = (name,direction) => {
     let { offset: { x, y }, shape } = player;
     switch(direction) {
         case 'DOWN':
-            if(checkPlayerEnd(player)){
+            if(checkPlayerEnd(player) && ping){
                 drawPlayerEnd(player);
+                ping = false;
                 return socket.emit('player_end',player);
             }
             player.offset.y = y+1;
@@ -623,6 +625,7 @@ socket.on('get_player', (player) => {
 socket.on('player_reset',({ name, player }) => {
     mergePlayer(players[name]);
     players[name] = player;
+    ping = true;
 });
 
 socket.on('player_disconnect',(player) => {
