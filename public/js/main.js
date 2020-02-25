@@ -241,10 +241,13 @@ const resetSquare = (x,y) => {
     );
 }  
 
-const deleteShape = ({ shape, offset, name }) => {
+const deleteShape = ({ shape, offset, name },a) => {
     shape.forEach((row,y) => {
         row.forEach((col,x) => {
             if(col){
+                if(a) {
+                    console.log(offset.x + x, offset.y + y);
+                }
                 resetSquare(offset.x+x, offset.y+y);
             }
         });
@@ -318,7 +321,7 @@ const checkPlayerEnd = ({ offset, shape }) => {
 const notify = (mss) => {
     const notify = document.querySelector('#notify');
     const p = document.createElement('p');
-    p.innerText = mss;
+    p.innerHTML = mss;
     notify.appendChild(p);
 }
 
@@ -427,7 +430,7 @@ const drawPlayers = () => {
             shape.forEach((row,y) => {
                 row.forEach((col,x) => {
                     if(col) {
-                        createSquare(offset.x + x,offset.y + y , color, block);
+                        createSquare(offset.x + x,offset.y + y , color, block, name);
                     }
                 });
             });
@@ -437,11 +440,9 @@ const drawPlayers = () => {
 }
 
 const drawPlayerEnd = (player) => {
-    console.log(player);
     player.shape.forEach((row, y) => {
       row.forEach((col, x) => {
         if (col) {
-            console.log('a');
           createSquare(player.offset.x + x, player.offset.y + y, player.color, block);
         }
       });
@@ -534,7 +535,6 @@ const renderScores = (scores) => {
 }
 
 const onKey = ({ keyCode }) => {
-    console.log(keyCode)
     if(client && moves.hasOwnProperty(keyCode)){
         movePlayer(client,moves[keyCode]);
         playerMoved = moves[keyCode] !== 'ROTATE';
@@ -557,7 +557,7 @@ document.querySelector('#play').addEventListener('click', (e) => {
             document.querySelector('.modal').style.display = 'none';
             localStorage.setItem(session,socket.id);
             renderScores(scores);
-            notify(`${player.name} has connected.`);
+            notify(`<p style='color: ${player.color}'>${player.name}</p> has connected.`);
             renderDetails(player);
         } else {
             document.querySelector('#play').value = 'Name taken.';
@@ -624,10 +624,10 @@ socket.on('player_reset',({ name, player }) => {
 });
 
 socket.on('player_disconnect',(player) => {
-    notify(`${player.name} has disconnected.`);
-    deleteShape(player);
+    notify(`<p style='color: ${player.color}'>${player.name}</p> has disconnected.`);
+    deleteShape(player,true);
     players[player.name].update = false;
-    gridUpdate = true;
+    players[player.name].disconnected = true;
 });
 
 document.querySelector("#sess").addEventListener('click', () => {

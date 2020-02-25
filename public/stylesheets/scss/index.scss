@@ -33,7 +33,14 @@
         flex-direction: column;
         justify-content: flex-end;
 
-        p { padding: .2rem; }
+        p { 
+            margin-top: 1rem;
+            width: 100%;
+
+            p {
+                font-size: 1.1rem;
+            }
+        }
     }
 
     &__scores {
