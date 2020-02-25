@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,QAAQ,AAAC,CACP,KAAK,CAAE,GAAG,CACX",
+    "sources": [
+        "../../../node_modules/node-sass/test/fixtures/cwd-include-path/outside.scss"
+    ],
+    "names": [],
+    "file": "outside.min.css"
+}

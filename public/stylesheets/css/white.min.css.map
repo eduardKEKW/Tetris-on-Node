@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,IAAI,AAAA,CAAC,UAAU,CAAC,KAAK,CAAE",
+    "sources": [
+        "../../../node_modules/node-sass/test/fixtures/watching/white.scss"
+    ],
+    "names": [],
+    "file": "white.min.css"
+}

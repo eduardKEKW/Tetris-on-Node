@@ -1,0 +1,10 @@
+{
+    "version": 3,
+    "mappings": "ACAA,AAAA,MAAM,AAAC,CACL,KAAK,CAAE,SAAS,CACjB,ADAD,AAAA,MAAM,AAAC,CACL,KAAK,CAAE,KAAK,CACb",
+    "sources": [
+        "../../../node_modules/node-sass/test/fixtures/watcher/sibling/three.scss",
+        "../../../node_modules/node-sass/test/fixtures/watcher/sibling/partials/_three.scss"
+    ],
+    "names": [],
+    "file": "three.min.css"
+}

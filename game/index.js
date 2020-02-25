@@ -1,15 +1,15 @@
-const Game = function({ cols, rows, playersCount }){
-    this.grid = new Array(+rows).fill(0).map(_ => new Array(+cols).fill(0));
-    this.playersCount = playersCount;
-    this.players = {};
-    this.end = false;
-    this.colors = new Set();
-    this.rows = +rows;
-    this.columns = +cols;
-    this.disconnected = {};
-    this.maxScore = +cols * +rows;
-    this.scores = {};
-}
+const Game = function({ cols, rows, playersCount }) {
+  this.grid = new Array(+rows).fill(0).map(_ => new Array(+cols).fill(0));
+  this.playersCount = playersCount;
+  this.players = {};
+  this.end = false;
+  this.colors = new Set();
+  this.rows = +rows;
+  this.columns = +cols;
+  this.disconnected = {};
+  this.maxScore = +cols * +rows;
+  this.scores = {};
+};
 
 Game.prototype = {
   addPlayer: function({ name, id }) {
@@ -84,7 +84,7 @@ Game.prototype = {
     });
   },
   checkPlayerEnd: function({ offset, shape }) {
-    const playerEnd = shape.some((row, y) => {
+    return shape.some((row, y) => {
       return row.some((col, x) => {
         if (col) {
           return (
@@ -95,7 +95,6 @@ Game.prototype = {
         return false;
       });
     });
-    return playerEnd;
   },
   sweepGrid: function({ shape, offset }) {
     return shape.reduce((acc, row, y) => {
@@ -108,7 +107,6 @@ Game.prototype = {
   getGrid: function() {
     return this.grid.map(row => {
       return row.map(col => {
-        //bug
         return col && this.players[col] ? this.players[col].name : col;
       });
     });
@@ -123,10 +121,8 @@ Game.prototype = {
     });
   },
   disconnect: function(id) {
-    if(this.players[id]){
-        this.players[id].disconnected = true;
-        return this.players[id];
-    }
+    this.players[id].disconnected = true;
+    return this.players[id];
   },
   reconnect: function(id, newId) {
     const player = this.players[id];
@@ -203,6 +199,16 @@ Game.prototype = {
       }
     );
   },
+  endSession: function(cb, end = false) {
+    if (Object.values(this.players).every(({ disconnected }) => disconnected)) {
+      if (end) {
+        return cb();
+      }
+      setTimeout(() => {
+        this.endSession(cb, true);
+      }, 5000);
+    }
+  },
   respawnPlayer: function(player, id) {
     this.mergePlayer(player, id);
     player.shape = this.getShape();
@@ -223,18 +229,11 @@ Game.prototype = {
       });
     });
   },
-
   isInvalidMove: function({ offset, possibleCollisions, shape }) {
     return shape.some((row, y) => {
       return row.some((col, x) => {
         if (col) {
-          if (offset.y > this.rows) {
-            return true;
-          }
-
-          const pos = this.grid[y + offset.y][x + offset.x];
-
-          if (pos) {
+          if ((pos = this.grid[y + offset.y][x + offset.x])) {
             return true;
           }
           if (isNaN(pos)) {
@@ -246,7 +245,6 @@ Game.prototype = {
       });
     });
   },
-
   collision: function({ offset, name, shape }) {
     const possibleCollisions = new Set();
 

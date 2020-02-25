@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,IAAI,AAAC,CACH,KAAK,CAAE,IAAI,CACZ",
+    "sources": [
+        "../../../node_modules/node-sass/test/fixtures/watcher/main/two.scss"
+    ],
+    "names": [],
+    "file": "two.min.css"
+}

@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,GAAG,AAAC,CAAE,KAAK,CAAE,UAAU,CAAI",
+    "sources": [
+        "../../../node_modules/node-sass/test/fixtures/custom-functions/string-conversion.scss"
+    ],
+    "names": [],
+    "file": "string-conversion.min.css"
+}

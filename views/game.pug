@@ -5,13 +5,15 @@ html
     meta(charset='UTF-8')
     meta(name='viewport', content='width=device-width, initial-scale=1.0')
     meta(http-equiv='X-UA-Compatible', content='ie=edge')
-    link(href="https://fonts.googleapis.com/css?family=Big+Shoulders+Display&display=swap" rel="stylesheet")
-    link(rel='stylesheet', href='/stylesheets/css/style.css')
+    link(rel='stylesheet', href='/stylesheets/css/index.min.css')
     script(src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js" defer)
     script(src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js" defer)
     script(src="/js/main.js" defer)
   body
     div.main
+      div.sess
+        div(id = 'sess-text').sess__text
+        div(id = 'sess').sess__container Copy session
       div.modal
         div.center.game-center
           form.form
@@ -22,9 +24,15 @@ html
           button(id='restart').form__button Restart Game.
           button(id='end').form__button End Session.
       div.main__notifications#notify
-      div.main__board
-        div.main__con
-          canvas(id='canvas').main__canvas
-          canvas(id='namesCanvas').main__names
+      div.main__board-container
+        div.main__board
+          div.details
+            div.details__container
+              div(id = 'name').details__name Name: 
+              div.details__color Color: 
+                div(id = 'color').details__color-block
+          div.main__con
+            canvas(id='canvas').main__canvas
+            canvas(id='namesCanvas').main__names
       div.main__scores#scores
         p Scores

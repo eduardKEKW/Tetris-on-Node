@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,IAAI,AAAA,CAAC,UAAU,CAAC,KAAK,CAAE",
+    "sources": [
+        "../../../node_modules/node-sass/test/fixtures/watching-dir-02/foo.scss"
+    ],
+    "names": [],
+    "file": "foo.min.css"
+}

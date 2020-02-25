@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,IAAI,AAAC,CACJ,UAAU,CAAE,KAAK,CAAG",
+    "sources": [
+        "../../../node_modules/node-sass/test/fixtures/watching/bar.sass"
+    ],
+    "names": [],
+    "file": "bar.min.css"
+}

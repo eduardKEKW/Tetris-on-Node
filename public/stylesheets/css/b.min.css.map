@@ -1,0 +1,10 @@
+{
+    "version": 3,
+    "mappings": "ACAA,AAAA,GAAG,AAAC,CACA,OAAO,CAAE,IAAI,CAChB,ADAD,AAAA,GAAG,AAAC,CACA,OAAO,CAAE,IAAI,CAChB",
+    "sources": [
+        "../../../node_modules/node-sass/test/fixtures/depth-first/b.scss",
+        "../../../node_modules/node-sass/test/fixtures/depth-first/b1.scss"
+    ],
+    "names": [],
+    "file": "b.min.css"
+}

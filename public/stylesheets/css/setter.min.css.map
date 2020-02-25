@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,GAAG,AAAC,CAAE,KAAK,CAAE,SAAS,CAAE,MAAM,CAAE,SAAS,CAAI",
+    "sources": [
+        "../../../node_modules/node-sass/test/fixtures/custom-functions/setter.scss"
+    ],
+    "names": [],
+    "file": "setter.min.css"
+}

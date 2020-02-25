@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "",
+    "sources": [
+        "../../../node_modules/node-sass/test/fixtures/include-path/lib/vars.scss"
+    ],
+    "names": [],
+    "file": "vars.min.css"
+}
