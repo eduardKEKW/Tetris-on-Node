@@ -146,6 +146,7 @@ Game.prototype = {
   },
   spawnPlayer: function(player) {
     const possibleCollisions = new Set();
+
     player.offset = {
       y: 0,
       x: Math.floor(Math.random() * (this.grid[0].length - 3))
@@ -157,7 +158,7 @@ Game.prototype = {
     } else if (
       this.checkCollisionForPlayer({ ...player, possibleCollisions })
     ) {
-      this.spawnPlayer(player);
+      return this.spawnPlayer(player);
     }
 
     player.update = true;
@@ -233,10 +234,12 @@ Game.prototype = {
     return shape.some((row, y) => {
       return row.some((col, x) => {
         if (col) {
-          if ((pos = this.grid[y + offset.y][x + offset.x])) {
-            return true;
+          const pos = this.grid[y + offset.y][x + offset.x];
+
+          if (pos) {
+            //return true;
           }
-          if (isNaN(pos)) {
+          if (typeof pos === 'string') {
             return true;
           }
           possibleCollisions.add(`${offset.y + y + 1}-${offset.x + x + 1}`);

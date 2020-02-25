@@ -489,8 +489,9 @@ const update = (time = 0) => {
     requestAnimationFrame(update);
 }
 
+let interval = null;
 const decrementPlayer = () => {
-    setInterval(() => {
+    interval = setInterval(() => {
         if(playerMoved){
             playerMoved = false;
         }else{
@@ -581,13 +582,14 @@ socket.on('game_over',() => {
 });
 
 socket.on('game_data',(game) => {
+    clearInterval(interval);
     localStorage.setItem(session,socket.id);
     gridUpdate = true;
     renderScores(game.scores);
     mainGrid = game.grid;
     players = game.players;
     document.querySelector('.modal--over').style.display = 'none';
-    decrementPlayer();
+    //decrementPlayer();
     notify(`Game start ${mainGrid.length} X ${mainGrid[0].length}.`)
     start();
 });
