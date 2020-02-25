@@ -589,7 +589,7 @@ socket.on('game_data',(game) => {
     mainGrid = game.grid;
     players = game.players;
     document.querySelector('.modal--over').style.display = 'none';
-    //decrementPlayer();
+    decrementPlayer();
     notify(`Game start ${mainGrid.length} X ${mainGrid[0].length}.`)
     start();
 });
