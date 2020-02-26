@@ -380,10 +380,13 @@ const movePlayer = (name,direction) => {
     let { offset: { x, y }, shape } = player;
     switch(direction) {
         case 'DOWN':
-            if(checkPlayerEnd(player) && ping){
+            if(checkPlayerEnd(player)){
                 drawPlayerEnd(player);
-                ping = false;
-                return socket.emit('player_end',player);
+                if(ping) {
+                    ping = false;
+                    return socket.emit("player_end", player);
+                }
+                //return;
             }
             player.offset.y = y+1;
             break;
@@ -661,7 +664,7 @@ const renderDetails = (player) => {
     if(id){
         document.querySelector('.modal').style.display = 'none';
         socket.emit('reconnect_player',{ id, session },(player) => {
-            document.addEventListener('keyup', onKey);
+            document.onkeydown = onKey;
             players[player.name] = player;
             client = player.name;
             renderDetails(player);
