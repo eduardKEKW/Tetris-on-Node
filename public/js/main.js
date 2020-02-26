@@ -508,9 +508,9 @@ const decrementPlayer = () => {
 const start = () => {
     const board = document.querySelector('.main__board-container');
     const colums = mainGrid[0].length,
-          rows = mainGrid.length,
-          width = +board.clientWidth,
-          height = +board.clientHeight;
+      rows = mainGrid.length,
+      width = +board.clientWidth,
+      height = +board.clientHeight - 0.2 * +board.clientHeight;
 
     if(boxSize*rows > height || boxSize*colums > width){
         boxSize = Math.min(height / rows,width / colums);
