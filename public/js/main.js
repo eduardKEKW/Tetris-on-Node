@@ -232,6 +232,11 @@ const createSquare = (x, y, color = fillStyle, img) => {
 }
 
 const resetSquare = (x,y) => {
+    
+    context.fillStyle = 'none';
+    context.shadowColor = 'none';   
+    context.shadowBlur = 0; 
+
     context.drawImage(
       back,
       x * boxSize,
